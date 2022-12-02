@@ -8,10 +8,10 @@ public class FP02Exercises {
         //addSquareOfListFunctional(numbers);
         //addCubeOfListFunctional(numbers);
         //addOddListFunctional(numbers);
-        //addEvenListFunctional(numbers);
+        addEvenListFunctional(numbers);
         //addDistinctListFunctional(numbers);
         //addSortedListFunctional(numbers);
-        addDistinctSortedListFunctional(numbers);
+        //addDistinctSortedListFunctional(numbers);
           /*0 12
             12 9
             21 13
