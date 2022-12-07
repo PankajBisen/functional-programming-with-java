@@ -66,8 +66,8 @@ public class FP04CustomClass {
                 new Course("API", "Microservices", 97, 22000),
                 new Course("Microservices", "Microservices", 96, 25000),
                 new Course("FullStack", "FullStack", 95, 14000),
-                new Course("AWS", "FrameWork", 94, 21000),
-                new Course("Azure", "Cloud", 93, 21000),
+                new Course("AWS", "Cloud", 94, 21000),
+                new Course("Azure", "Cloud", 99, 21000),
                 new Course("Docker", "Cloud", 92, 20000),
                 new Course("Kubernetes", "Cloud", 91, 20000));
 
@@ -89,8 +89,8 @@ public class FP04CustomClass {
 
 
         Comparator <Course> comparatorByNoOfStudentsDecreasing=Comparator
-                        .comparingInt(Course::getNoOdStudent)
-                        .reversed();
+                .comparingInt(Course::getNoOdStudent)
+                .reversed();
         System.out.println(courses
                 .stream()
                 .sorted(comparatorByNoOfStudentsDecreasing)
@@ -99,8 +99,8 @@ public class FP04CustomClass {
 
         Comparator <Course> comparatorByNoOfStudentsAndNoOfReviews=Comparator
                 .comparingInt(Course::getNoOdStudent)
-                        .thenComparingInt(Course::getReviewScore)
-                        .reversed();
+                .thenComparingInt(Course::getReviewScore)
+                .reversed();
         System.out.println(courses
                 .stream()
                 .sorted(comparatorByNoOfStudentsAndNoOfReviews)
@@ -146,9 +146,41 @@ public class FP04CustomClass {
         System.out.println(courses.stream()
                 .filter(reviewScoreGreaterThan95Predicate)
                 .findAny());
+        System.out.println(courses.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOdStudent)
+                .average());
+        System.out.println(courses.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOdStudent)
+                .count());
+        System.out.println(courses.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOdStudent)
+                .max());
+        System.out.println(courses.stream()
+                .filter(reviewScoreGreaterThan95Predicate)
+                .mapToInt(Course::getNoOdStudent)
+                .min());
 
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory)));
 
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory,
+                                Collectors.counting())));
 
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory,
+                                Collectors.maxBy(Comparator.comparing(Course::getReviewScore)))));
 
+        System.out.println(
+                courses.stream()
+                        .collect(Collectors.groupingBy(Course::getCategory,
+                                Collectors.mapping(Course::getName,
+                                        Collectors.toList()))));
     }
 }
