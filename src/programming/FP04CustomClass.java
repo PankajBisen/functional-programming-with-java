@@ -95,8 +95,8 @@ public class FP04CustomClass {
                 .stream()
                 .sorted(comparatorByNoOfStudentsDecreasing)
                 .collect(Collectors.toList()));
-
-
+//
+//
         Comparator <Course> comparatorByNoOfStudentsAndNoOfReviews=Comparator
                 .comparingInt(Course::getNoOdStudent)
                 .thenComparingInt(Course::getReviewScore)
@@ -121,16 +121,16 @@ public class FP04CustomClass {
                 .skip(3)
                 .limit(5)
                 .collect(Collectors.toList()));
-
+//
         System.out.println(courses);
-
+//
         System.out.println(courses.stream()
                 .takeWhile(course -> course.getReviewScore()>=95)
                 .collect(Collectors.toList()));
         System.out.println(courses.stream()
                 .dropWhile(course -> course.getReviewScore()>=95)
                 .collect(Collectors.toList()));
-
+//
         System.out.println(courses.stream()
                 .max(comparatorByNoOfStudentsAndNoOfReviews));
         System.out.println(courses.stream()
@@ -143,21 +143,26 @@ public class FP04CustomClass {
         System.out.println(courses.stream()
                 .filter(reviewScoreGreaterThan95Predicate)
                 .findFirst());
+
         System.out.println(courses.stream()
                 .filter(reviewScoreGreaterThan95Predicate)
                 .findAny());
+
         System.out.println(courses.stream()
                 .filter(reviewScoreGreaterThan95Predicate)
                 .mapToInt(Course::getNoOdStudent)
                 .average());
+
         System.out.println(courses.stream()
                 .filter(reviewScoreGreaterThan95Predicate)
                 .mapToInt(Course::getNoOdStudent)
                 .count());
+
         System.out.println(courses.stream()
                 .filter(reviewScoreGreaterThan95Predicate)
                 .mapToInt(Course::getNoOdStudent)
                 .max());
+
         System.out.println(courses.stream()
                 .filter(reviewScoreGreaterThan95Predicate)
                 .mapToInt(Course::getNoOdStudent)
@@ -165,7 +170,7 @@ public class FP04CustomClass {
 
         System.out.println(
                 courses.stream()
-                        .collect(Collectors.groupingBy(Course::getCategory)));
+                    .collect(Collectors.groupingBy(Course::getCategory)));
 
         System.out.println(
                 courses.stream()
