@@ -199,4 +199,6 @@ public class FP04CustomClass {
     private static Predicate<Course> createPredicateWithCutOffReviewScore(int cutOfReviewScore) {
         return course -> course.getReviewScore() > cutOfReviewScore;
     }
+
+
 }
