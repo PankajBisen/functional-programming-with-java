@@ -10,8 +10,8 @@ public class FP02Functional {
 //        List<Integer> squaredList = squareList(numbers);
 //        System.out.println(squaredList);
 
-        List<Integer> doubleEvenList = doubleEvenList(numbers);
-        System.out.println(doubleEvenList);
+//        List<Integer> doubleEvenList = doubleEvenList(numbers);
+//        System.out.println(doubleEvenList);
 
          /*0 12
             12 9
@@ -23,8 +23,8 @@ public class FP02Functional {
             50 12
             62 15
             77*/
-//        int sum=addListFunctional(numbers);
-//        System.out.println(sum);
+        int sum=addListFunctional(numbers);
+        System.out.println(sum);
     }
 
     private static List<Integer> squareList(List<Integer> numbers) {
@@ -46,6 +46,7 @@ public class FP02Functional {
     }
     private static int addListFunctional(List<Integer> numbers) {
         return numbers.stream()
+                .parallel()
                 //.reduce(0, FP02Functional::sum);
                 //.reduce(0,(aggregate,nextNumber)->aggregate+nextNumber);
                 .reduce(0,Integer::sum);

@@ -187,5 +187,16 @@ public class FP04CustomClass {
                         .collect(Collectors.groupingBy(Course::getCategory,
                                 Collectors.mapping(Course::getName,
                                         Collectors.toList()))));
+
+
+        Predicate<Course> reviewScoreGreaterThan95Predicate2 =
+                createPredicateWithCutOffReviewScore(95);
+        Predicate<Course> reviewScoreGreaterThan90Predicate2=
+                createPredicateWithCutOffReviewScore(90);
+    }
+
+    //HigherOrderFunction
+    private static Predicate<Course> createPredicateWithCutOffReviewScore(int cutOfReviewScore) {
+        return course -> course.getReviewScore() > cutOfReviewScore;
     }
 }
